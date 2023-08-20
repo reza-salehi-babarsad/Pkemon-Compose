@@ -5,9 +5,8 @@ import com.rezoo.pkemon_compose.data.remote.response.PokemonList
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
-import java.time.ZoneOffset
 
-interface PkeApi {
+interface PokeApi {
 
     @GET("pokemon")
     suspend fun getPokemonList(
