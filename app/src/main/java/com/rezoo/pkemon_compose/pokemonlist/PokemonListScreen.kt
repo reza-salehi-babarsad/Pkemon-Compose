@@ -26,6 +26,7 @@ import androidx.compose.ui.focus.FocusState
 import androidx.compose.ui.focus.onFocusChanged
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.rezoo.pkemon_compose.R
@@ -60,46 +61,8 @@ fun PokemonListScreen(
     }
 }
 
-@RequiresApi(Build.VERSION_CODES.O)
+@Preview(showBackground = true)
 @Composable
-fun SearchBar(
-    modifier: Modifier = Modifier,
-    hint: String = "",
-    onSearch: (String) -> Unit = {}
-) {
-    var text by remember {
-        mutableStateOf("")
-    }
-    var isHintDisplayed by remember {
-        mutableStateOf(hint != "")
-    }
+fun PokemonListScreenPreview() {
 
-    Box(modifier = modifier) {
-        BasicTextField(
-            value = text,
-            onValueChange = {
-                text = it
-                onSearch(it)
-            },
-            maxLines = 1,
-            singleLine = true,
-            textStyle = androidx.compose.ui.text.TextStyle(color = Color.Black),
-            modifier = Modifier
-                .fillMaxWidth()
-                .shadow(5.dp, CircleShape)
-                .background(Color.White, CircleShape)
-                .padding(horizontal = 20.dp, vertical = 12.dp)
-                .onFocusChanged {
-                    isHintDisplayed = it != FocusState.Active
-                }
-        )
-        if(isHintDisplayed) {
-            Text(
-                text = hint,
-                color = Color.LightGray,
-                modifier = Modifier
-                    .padding(horizontal = 20.dp, vertical = 12.dp)
-            )
-        }
-    }
 }
